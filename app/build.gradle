@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.sourabh.todorooster"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+def autoValueVer = "1.6.2"
+def lifecycle_version = "2.0.0-beta01"
+
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-rc02'
+
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+
+    annotationProcessor "com.google.auto.value:auto-value:$autoValueVer"
+    compileOnly "com.google.auto.value:auto-value-annotations:$autoValueVer"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    //Rx-java liveData bridge
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+}
